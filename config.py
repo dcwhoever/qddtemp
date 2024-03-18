@@ -17,7 +17,7 @@ from libs.config_utils import strtobool
 # QD 框架常用设置
 debug = bool(strtobool(os.getenv('QD_DEBUG', 'False')))                      # 是否启用 QD 框架 Debug
 bind = str(os.getenv('BIND', '0.0.0.0'))                                    # 框架运行监听地址 ('0.0.0.0' 表示监听所有 IP 地址)
-port = int(os.getenv('PORT', '8923'))                                         # 监听端口 Port
+port = int(os.getenv('PORT', '7860'))                                         # 监听端口 Port
 multiprocess = bool(strtobool(os.getenv('MULTI_PROCESS', 'False')))          # 是否启用多进程模式, Windows 平台无效, 请谨慎使用
 autoreload = bool(strtobool(os.getenv('AUTO_RELOAD', 'False')))              # 是否启用自动热加载, `multiprocess=True` 时无效
 gzip = bool(strtobool(os.getenv('GZIP', 'True')))                            # 是否启用 gzip
