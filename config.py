@@ -86,8 +86,8 @@ redis_url = urlparse(os.getenv('REDISCLOUD_URL', ''))                       # �
 
 class redis:
     ## redis 连接参数, 建议基于 Redis URL 自动设置, 可选
-    host = redis_url.hostname or 'localhost'                                # 访问 Redis 的 Hostname
-    port = redis_url.port or 6379                                           # Redis 的 端口Port
+    host = 'localhost'                                # 访问 Redis 的 Hostname
+    port = 6379                                           # Redis 的 端口Port
     passwd = redis_url.password or None                                     # 访问 Redis 权限密码
     db = int(os.getenv('REDIS_DB_INDEX', '1'))                                # 索引
 
