@@ -46,16 +46,16 @@ aes_key = hashlib.sha256(os.getenv('AES_KEY', 'Few3vuy').encode('utf-8')).digest
 db_type = os.getenv('DB_TYPE', 'mysql')                                   # 默认为Sqlite3, 需要使用MySQL时设置为'mysql'
 
 ## MySQL URL设置
-mysql_url = urlparse(os.getenv('JAWSDB_MARIA_URL', ''))                     # 格式: mysql://用户名:密码@hostname:port/数据库名?auth_plugin=
-
+#mysql_url = urlparse(os.getenv('JAWSDB_MARIA_URL', ''))                     # 格式: mysql://用户名:密码@hostname:port/数据库名?auth_plugin=
+mysql_url = "mysql://m10852_d2usename:Hd85bU-SW4I4S7fkp'ySY\\$f5O0I:85@richards993.serv00.net:20696/m10852_mgdatname?auth_plugin="
 
 class mysql:
     ## 数据库连接参数, 建议基于 MySQL URL 自动设置, 可选
-    host = 'richards993.serv00.net'  # 访问 MySQL 的 Hostname
-    port = 20696  # MySQL 的 端口Port
-    database = 'm10852_mgdatname'  # QD 框架的数据库名
-    user = 'm10852_d2usename'  # 拥有访问 MySQL 内 QD 框架数据库权限的用户名
-    passwd = 'Hd85bU-SW4I4S7fkp\'ySY\$f5O0I:85'  # 用户名对应的密码
+    host = 'richards993.serv00.net'  
+    port = 20696  
+    database = 'm10852_mgdatname'  
+    user = 'm10852_d2usename'  
+    passwd = 'Hd85bU-SW4I4S7fkp\'ySY\$f5O0I:85'  
     auth_plugin = parse_qs(mysql_url.query).get('auth_plugin', [''])[0]  # auth_plugin, 默认为空, 可修改为'mysql_native_password','caching_sha2_password'
 
 ## Sqlite3 设置
