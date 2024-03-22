@@ -101,13 +101,10 @@ def start_server():
 
 
 if __name__ == "__main__":
-    SPACE_SUBDOMAIN = os.getenv('SPACE_SUBDOMAIN')
-    
+    SPACE_SUBDOMAIN = os.getenv('SPACE_SUBDOMAIN')    
     if SPACE_SUBDOMAIN == "hhhh23333-qsdddq":
         print("welcome")
     else:
         print("This is a private application and is not open to the public. Thank you for your visit！ by.dcling")
-        time.sleep(10)
-        sys.exit()
-      
+        sys.exit()      
     start_server()
