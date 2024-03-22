@@ -38,7 +38,7 @@ pytz
 redis
 requests
 six
-sqlalchemy[asyncio]
+sqlalchemy[asyncio]==1.4.51
 tornado
 tzdata
 u-msgpack-python
