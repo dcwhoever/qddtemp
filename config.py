@@ -37,13 +37,13 @@ cookie_secure_mode = bool(strtobool(os.getenv('COOKIE_SECURE_MODE', 'False')))  
 # 启用后仅支持通过 HTTPS 访问 QD 框架, 请确保已正确配置 HTTPS 及证书
 # HTTP 访问将导致 Cookie 无法正常设置, 无法登录和使用框架功能
 
-cookie_secret = hashlib.sha256(os.getenv('COOKIE_SECRET', 'binux').encode('utf-8')).digest()    # Cookie 加密密钥, 强烈建议修改
+cookie_secret = hashlib.sha256(os.getenv('COOKIE_SECRET', 'Few3vuy').encode('utf-8')).digest()    # Cookie 加密密钥, 强烈建议修改
 pbkdf2_iterations = int(os.getenv('PBKDF2_ITERATIONS', '400'))                                    # pbkdf2 迭代次数
-aes_key = hashlib.sha256(os.getenv('AES_KEY', 'binux').encode('utf-8')).digest()                # AES 加密密钥, 强烈建议修改
+aes_key = hashlib.sha256(os.getenv('AES_KEY', 'Few3vuy').encode('utf-8')).digest()                # AES 加密密钥, 强烈建议修改
 
 # 数据库设置
 ## 数据库类型, 修改 sqlite3 为 mysql 使用 mysql
-db_type = os.getenv('DB_TYPE', 'sqlite3')                                   # 默认为Sqlite3, 需要使用MySQL时设置为'mysql'
+db_type = os.getenv('DB_TYPE', 'mysql')                                   # 默认为Sqlite3, 需要使用MySQL时设置为'mysql'
 
 ## MySQL URL设置
 mysql_url = urlparse(os.getenv('JAWSDB_MARIA_URL', ''))                     # 格式: mysql://用户名:密码@hostname:port/数据库名?auth_plugin=
@@ -51,12 +51,12 @@ mysql_url = urlparse(os.getenv('JAWSDB_MARIA_URL', ''))                     # �
 
 class mysql:
     ## 数据库连接参数, 建议基于 MySQL URL 自动设置, 可选
-    host = mysql_url.hostname or 'localhost'                                # 访问 MySQL 的 Hostname
-    port = mysql_url.port or '3306'                                         # MySQL 的 端口Port
-    database = mysql_url.path[1:] or 'qd'                                   # QD 框架的数据库名
-    user = mysql_url.username or 'qd'                                       # 拥有访问 MySQL 内 QD 框架数据库权限的用户名
-    passwd = mysql_url.password or None                                     # 用户名对应的密码
-    auth_plugin = parse_qs(mysql_url.query).get('auth_plugin', [''])[0]      # auth_plugin, 默认为空, 可修改为'mysql_native_password','caching_sha2_password'
+    host = 'richards993.serv00.net'  # 访问 MySQL 的 Hostname
+    port = 20696  # MySQL 的 端口Port
+    database = 'm10852_mgdatname'  # QD 框架的数据库名
+    user = 'm10852_d2usename'  # 拥有访问 MySQL 内 QD 框架数据库权限的用户名
+    passwd = 'Hd85bU-SW4I4S7fkp\'ySY\$f5O0I:85'  # 用户名对应的密码
+    auth_plugin = parse_qs(mysql_url.query).get('auth_plugin', [''])[0]  # auth_plugin, 默认为空, 可修改为'mysql_native_password','caching_sha2_password'
 
 ## Sqlite3 设置
 
