@@ -45,6 +45,6 @@ u-msgpack-python==2.8.0
 urllib3==2.2.0; python_version >= '3.8'
 yarl==1.9.4; python_version >= '3.7'
 ddddocr==1.4.7
-#pycurl==7.45.2
+pycurl==7.45.2
 #ddddocr
-pycurl
+#pycurl
