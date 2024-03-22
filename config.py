@@ -47,7 +47,8 @@ db_type = os.getenv('DB_TYPE', 'mysql')                                   # 默�
 
 ## MySQL URL设置
 #mysql_url = urlparse(os.getenv('JAWSDB_MARIA_URL', ''))                     # 格式: mysql://用户名:密码@hostname:port/数据库名?auth_plugin=
-mysql_url = "mysql://m10852_d2usename:Hd85bU-SW4I4S7fkp'ySY\\$f5O0I:85@richards993.serv00.net:20696/m10852_mgdatname?auth_plugin="
+#mysql_url = "mysql://m10852_d2usename:Hd85bU-SW4I4S7fkp'ySY\\$f5O0I:85@richards993.serv00.net:20696/m10852_mgdatname?auth_plugin="
+mysql_url = urlparse("mysql://m10852_d2usename:Hd85bU-SW4I4S7fkp'ySY\\$f5O0I:85@richards993.serv00.net:20696/m10852_mgdatname?auth_plugin=")
 
 class mysql:
     ## 数据库连接参数, 建议基于 MySQL URL 自动设置, 可选
