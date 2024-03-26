@@ -9,6 +9,9 @@ import logging
 import os
 import platform
 import sys
+import subprocess
+import yaml
+
 
 import tornado.log
 from tornado.httpserver import HTTPServer
@@ -100,11 +103,64 @@ def start_server():
 
 
 
+#if __name__ == "__main__":
+#    SPACE_SUBDOMAIN = os.getenv('SPACE_SUBDOMAIN')    
+#    if SPACE_SUBDOMAIN == "gsdrmm-nfoet32":
+#        print("welcome")
+#    else:
+#        print("This is a private application and is not open to the public. Thank you for your visit！ by.dcling")
+#        sys.exit()      
+#    start_server()
+
+
+
+
+
+    # your server start code here
+
+def generate_config():
+    ACCESS_KEY = os.getenv('ACCESS_KEY')
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
+    config = {
+        "access-key-id": ACCESS_KEY,
+        "secret-access-key": SECRET_KEY,
+        "dbs": [
+            {
+                "path": "/app/config/database.db",
+                "replicas": [
+                    {
+                        "type": "s3",
+                        "bucket": "gikir23",
+                        "path": "qd/db",
+                        "endpoint": "s3.us-east-005.backblazeb2.com",
+                        "force-path-style": True
+                    }
+                ]
+            }
+        ]
+    }
+    with open('/app/litestream.yml', 'w') as f:
+        yaml.dump(config, f, default_flow_style=False)
+
+def restore_database():
+    DB_PATH = "/app/config/database.db"
+    LITESTREAM_CONFIGPath = "/app/litestream.yml"
+    if not os.path.isfile(DB_PATH):
+        subprocess.Popen(["litestream", "restore", "-if-replica-exists", "-config", LITESTREAM_CONFIGPath, DB_PATH])
+        
+    subprocess.Popen(["litestream", "replicate", "-config", LITESTREAM_CONFIGPath])
+
 if __name__ == "__main__":
-    SPACE_SUBDOMAIN = os.getenv('SPACE_SUBDOMAIN')    
+    generate_config()
+    restore_database()    
+    SPACE_SUBDOMAIN = os.getenv('SPACE_SUBDOMAIN')
     if SPACE_SUBDOMAIN == "gsdrmm-nfoet32":
         print("welcome")
     else:
         print("This is a private application and is not open to the public. Thank you for your visit！ by.dcling")
-        sys.exit()      
+        sys.exit()    
     start_server()
+
+
+
