@@ -48,3 +48,4 @@ yarl
 #pycurl==7.45.2
 ddddocr
 pycurl
+pyyaml
