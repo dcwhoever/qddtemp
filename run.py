@@ -147,9 +147,10 @@ def restore_database():
     DB_PATH = "/app/config/database.db"
     LITESTREAM_CONFIGPath = "/app/litestream.yml"
     if not os.path.isfile(DB_PATH):
-        subprocess.Popen(["litestream", "restore", "-if-replica-exists", "-config", LITESTREAM_CONFIGPath, DB_PATH])
+        subprocess.call(["litestream", "restore", "-if-replica-exists", "-config", LITESTREAM_CONFIGPath, DB_PATH])
         
     subprocess.Popen(["litestream", "replicate", "-config", LITESTREAM_CONFIGPath])
+
 
 if __name__ == "__main__":
     generate_config()
